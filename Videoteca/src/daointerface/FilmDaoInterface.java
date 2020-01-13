@@ -10,6 +10,6 @@ public interface FilmDaoInterface extends ConnectionInterface {
 	public void delete(Film a);
 	public void update(Film a);
 	public List<Film> readAll();
-	public Film readFromTitolo(Film a);
+	public Film readFromId(int id);
 	
 }

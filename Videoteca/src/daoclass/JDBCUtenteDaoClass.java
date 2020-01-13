@@ -42,7 +42,7 @@ public class JDBCUtenteDaoClass implements UtenteDaoInterface {
 			EntityManager manager = getEntityManager();
 			EntityTransaction transaction = manager.getTransaction();
 			transaction.begin();
-			manager.persist(new Utente(u));
+			manager.persist(u);
 			transaction.commit();
 			return true;
 		}catch(Exception e) {
@@ -85,6 +85,7 @@ public class JDBCUtenteDaoClass implements UtenteDaoInterface {
 
 	@Override
 	public void update(Utente u) {
+		// TODO Auto-generated method stub
 		try {
 			EntityManager manager = getEntityManager();
 			EntityTransaction transaction = manager.getTransaction();
@@ -94,20 +95,20 @@ public class JDBCUtenteDaoClass implements UtenteDaoInterface {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		// TODO Auto-generated method stub
+		
 		
 	}
 
-
 	@Override
-	public Utente read(String email) {
+	public Utente read(String email ,String password) {
 		// TODO Auto-generated method stub
 		Utente c = null;
 		try {
 			EntityManager manager = getEntityManager();
-			String query = "SELECT u FROM Utente u WHERE u.email =:email";
+			String query = "SELECT u FROM Utente u WHERE u.email =:email AND u.password = :password";
 			Query q = manager.createQuery(query);
 			q.setParameter("email", email);
+			q.setParameter("password", password);
 			EntityTransaction transaction = manager.getTransaction();
 			transaction.begin();
 			c = (Utente) q.getSingleResult();
@@ -118,5 +119,6 @@ public class JDBCUtenteDaoClass implements UtenteDaoInterface {
 		return c;
 		
 	}
+
 
 }

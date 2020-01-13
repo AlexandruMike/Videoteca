@@ -79,13 +79,17 @@ public class JDBCFilmDaoClass implements FilmDaoInterface {
 	}
 
 	@Override
-	public Film readFromTitolo(Film a) {
+	public Film readFromId(int id) {
 		Film c = null;
+		
 		try {
 			EntityManager manager = getEntityManager();
+			String query = "SELECT f FROM Film f WHERE f.id=:id";
+			Query q = manager.createQuery(query);
+			q.setParameter("id", id);
 			EntityTransaction transaction = manager.getTransaction();
 			transaction.begin();
-			c = manager.find(Film.class, a.getTitolo());
+			c = (Film) q.getSingleResult();
 			transaction.commit();
 			return c;
 		} catch (Exception e) {
@@ -93,13 +97,14 @@ public class JDBCFilmDaoClass implements FilmDaoInterface {
 			e.printStackTrace();
 			return null;
 		}
+		
 	}
 
 	@Override
 	public List<Film> readAll() {
 		try {
 			EntityManager manager = getEntityManager();
-			return manager.createNamedQuery("Categoria.findAll").getResultList();
+			return manager.createNamedQuery("Film.findAll").getResultList();
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();

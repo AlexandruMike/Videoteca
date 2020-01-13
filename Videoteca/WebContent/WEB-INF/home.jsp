@@ -42,38 +42,22 @@
 	<div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
 		<ul class="nav navbar-nav">
 			<li class="nav-item"><a href="#" class="nav-link">Home</a></li>
-			<li class="nav-item"><a href="#" class="nav-link">Chi Siamo</a></li>			
-
-			<li class="nav-item"><a href="#" class="nav-link">Contatti</a></li>
 		</ul>
-		<form class="navbar-form form-inline">
-			<div class="input-group search-box">								
-				<input type="text" id="search" class="form-control" placeholder="Cerca un film...">
-				<span class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span>
-			</div>
-		</form>
 		<ul class="nav navbar-nav navbar-right ml-auto">			
 			<li class="nav-item">
 				<a data-toggle="dropdown" class="nav-link dropdown-toggle" href="#">Login</a>
 				<ul class="dropdown-menu form-wrapper">					
 					<li>
-						<form action="/examples/actions/confirmation.php" method="post">
-							<p class="hint-text">Registrati con i tuoi social</p>
-							<div class="form-group social-btn clearfix">
-								<a href="#" class="btn btn-primary pull-left"><i class="fa fa-facebook"></i> Facebook</a>
-								<a href="#" class="btn btn-info pull-right"><i class="fa fa-twitter"></i> Twitter</a>
-							</div>
-							<div class="or-seperator"><b>o</b></div>
+						<form action="LogIn" method="post">
+
 							<div class="form-group">
-								<input type="text" class="form-control" placeholder="Username" required="required">
+								<input type="email" name="email" class="form-control" placeholder="Email" required="required">
 							</div>
 							<div class="form-group">
-								<input type="password" class="form-control" placeholder="Password" required="required">
+								<input type="password" name="password" class="form-control" placeholder="Password" required="required">
 							</div>
 							<input type="submit" class="btn btn-primary btn-block" value="Login">
-							<div class="form-footer">
-								<a href="#">Dimenticato la tua password?</a>
-							</div>
+
 						</form>
 					</li>
 				</ul>
@@ -82,19 +66,16 @@
 				<a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle get-started-btn mt-1 mb-1">Registrati</a>
 				<ul class="dropdown-menu form-wrapper">					
 					<li>
-						<form action="/examples/actions/confirmation.php" method="post">
+						<form action="register-servlet" method="post">
 							<p class="hint-text">Crea il tuo Account!</p>
 							<div class="form-group">
-								<input type="text" class="form-control" placeholder="Username" required="required">
+								<input type="email" name="email" class="form-control" placeholder="Email" required="required">
 							</div>
 							<div class="form-group">
-								<input type="password" class="form-control" placeholder="Password" required="required">
+								<input type="password" name="pass" class="form-control" placeholder="Password" required="required">
 							</div>
 							<div class="form-group">
-								<input type="password" class="form-control" placeholder="Reinserisci la tua Password" required="required">
-							</div>
-							<div class="form-group">
-								<label class="checkbox-inline"><input type="checkbox" required="required"> Accetto i <a href="#">Termini &amp; Condizioni</a></label>
+								<input type="password" name="confirmPass" class="form-control" placeholder="Reinserisci la tua Password" required="required">
 							</div>
 							<input type="submit" class="btn btn-primary btn-block" value="Sign up">
 						</form>

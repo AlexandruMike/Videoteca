@@ -25,11 +25,16 @@ public class Noleggio implements Serializable {
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="id_utente")
 	private Utente utente;
+	
 
 	public Noleggio() {
 	}
 
-
+	public Noleggio(Film film, Utente utente) {
+		this.film=film;
+		this.utente=utente;
+	}
+	
 	public Noleggio(Noleggio n) {
 		// TODO Auto-generated constructor stub
 		this.film=n.getFilm();
@@ -61,4 +66,10 @@ public class Noleggio implements Serializable {
 		this.utente = utente;
 	}
 
+	@Override
+	public String toString() {
+		return "Noleggio [id=" + id + ", film=" + film + ", utente=" + utente + "]";
+	}
+	
+	
 }

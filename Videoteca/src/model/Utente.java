@@ -15,12 +15,16 @@ public class Utente implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@Column(name="id")
 	private int id;
 
+	@Column(name = "email")
 	private String email;
-
+	
+	@Column(name = "password")
 	private String password;
-
+	
+	@Column(name = "ruolo")
 	private int ruolo;
 
 	//bi-directional many-to-one association to Noleggio
@@ -39,8 +43,17 @@ public class Utente implements Serializable {
 			}
 		)
 	private List<Film> films;
-
-	public Utente() {
+	
+	@Transient
+	private Carrello carrello;
+	
+	public Utente() {}
+	
+	public Utente(String email, String password, int ruolo) {
+		super();
+		this.email=email;
+		this.password=password;
+		this.ruolo=ruolo;
 	}
 
 	public Utente(Utente u) {
@@ -48,7 +61,7 @@ public class Utente implements Serializable {
 		this.email=u.getEmail();
 		this.password=u.getPassword();
 	}
-
+	
 	public int getId() {
 		return this.id;
 	}
@@ -109,6 +122,24 @@ public class Utente implements Serializable {
 
 	public void setFilms(List<Film> films) {
 		this.films = films;
+	}
+
+	@Override
+	public String toString() {
+		return "Utente [id=" + id + ", email=" + email + ", password=" + password + ", ruolo=" + ruolo + ", noleggios="
+				+ noleggios + ", films=" + films + "]";
+	}
+	
+	public Carrello getCarrello() {
+		return carrello;
+	}
+	
+	public void setCarrello(Carrello carrello) {
+		this.carrello=carrello;
+	}
+	
+	public void svuotaCarrello() {
+		carrello=null;
 	}
 
 }
